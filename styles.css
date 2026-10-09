@@ -282,3 +282,4 @@ h2.section-title a:hover { color: var(--theme); text-decoration: none; }
   .cv-card, .card { box-shadow: none; border: 1px solid #ccc; }
 }
 @media (min-width: 761px) { .hide-desktop { display: none; } }
+.category.tutorials-heading { margin-top: 56px; }
