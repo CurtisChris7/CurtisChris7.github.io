@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Christopher Curtis</title>
+<meta name="description" content="Research projects and open-source teaching materials by Christopher Curtis.">
+<meta name="author" content="Christopher Curtis">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Christopher Curtis">
+<meta property="og:title" content="Projects | Christopher Curtis">
+<meta property="og:description" content="Research projects and open-source teaching materials by Christopher Curtis.">
+<meta property="og:url" content="https://CurtisChris7.github.io/projects.html">
+<meta property="og:image" content="https://CurtisChris7.github.io/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://CurtisChris7.github.io/projects.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
+<script defer src="script.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Main">
+    <a class="navbar-brand" href="./"><span class="first">Christopher</span> Curtis</a>
+    <button class="icon-button nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="./">about</a></li>
+      <li><a href="publications.html">publications</a></li>
+      <li><a href="projects.html" aria-current="page">projects</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><button class="icon-button theme-toggle" type="button" aria-label="Toggle dark mode"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.8v2.4M12 19.8v2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></li>
+    </ul>
+  </nav>
+</header>
+<main id="main" class="page">
+  <div class="container">
+    <header class="post-header">
+      <h1 class="post-title">projects</h1>
+      <p class="post-description">Research projects and open-source teaching materials.</p>
+    </header>
+
+    <h2 class="category">research</h2>
+    <div class="card-grid">
+        <article class="card">
+          <h3>CIPHERGRID</h3>
+          <div class="meta">AI evaluation &middot; NeurIPS 2026 (accepted)</div>
+          <p>A controlled benchmark for multimodal rule inference and sequential action: can a model infer an unfamiliar symbolic world from examples, keep its rules straight, and use them to act? Even capable models struggle to integrate skills they can perform individually.</p>
+          <p class="stats">635 benchmark problems &middot; 41.89% best model accuracy*</p>
+          <p class="note">*As reported in the current public benchmark card; results depend on evaluation configuration.</p>
+          <div class="links"><a class="btn" href="https://github.com/CurtisChris7/CIPHERGRID" rel="noopener noreferrer" target="_blank">Code</a><a class="btn" href="https://huggingface.co/datasets/AnonCC7/CIPHERGRID" rel="noopener noreferrer" target="_blank">Dataset</a></div>
+        </article>
+        <article class="card">
+          <h3>Positional Encoding: Past, Present, and Future</h3>
+          <div class="meta">Transformers &middot; NeurIPS 2025 tutorial</div>
+          <p>An official NeurIPS tutorial, co-presented with Saiph Savage, connecting mathematical foundations and modern methods in Transformer positional encoding.</p>
+          <div class="links"><a class="btn" href="https://neurips.cc/virtual/2025/loc/mexico-city/128797" rel="noopener noreferrer" target="_blank">Tutorial</a><a class="btn" href="https://github.com/CurtisChris7/Neurips2025-CMDX-Tutorial" rel="noopener noreferrer" target="_blank">Code</a></div>
+        </article>
+        <article class="card">
+          <h3>A Culturally-Aware AI Tool for Crowdworkers</h3>
+          <div class="meta">Human&ndash;AI systems &middot; ACM PACMHCI / CSCW 2024</div>
+          <p>Investigates how culturally informed design and chronemics can better support diverse crowdworker work styles.</p>
+          <div class="links"><a class="btn" href="https://doi.org/10.1145/3686899" rel="noopener noreferrer" target="_blank">Paper</a></div>
+        </article>
+        <article class="card">
+          <h3>Office-Mind AI</h3>
+          <div class="meta">Human&ndash;AI systems &middot; ACM Collective Intelligence 2024</div>
+          <p>A generative AI tool for gig workers, connecting practical system design with real workflows.</p>
+          <div class="links"><a class="btn" href="https://par.nsf.gov/servlets/purl/10590841" rel="noopener noreferrer" target="_blank">Extended abstract</a></div>
+        </article>
+    </div>
+
+    <h2 class="category">code &amp; teaching</h2>
+    <div class="card-grid">
+        <article class="card">
+          <h3>Positional encoding implementations</h3>
+          <div class="meta">NeurIPS tutorial</div>
+          <p>Reference code for learning and teaching Transformer position methods.</p>
+          <div class="links"><a class="btn" href="https://github.com/CurtisChris7/Neurips2025-CMDX-Tutorial" rel="noopener noreferrer" target="_blank">GitHub</a></div>
+        </article>
+        <article class="card">
+          <h3>GPT + React workshop</h3>
+          <div class="meta">Workshop materials</div>
+          <p>Public materials for a hands-on LLM application development workshop.</p>
+          <div class="links"><a class="btn" href="https://github.com/CurtisChris7/CS5170-GPT-React-Workshop" rel="noopener noreferrer" target="_blank">GitHub</a></div>
+        </article>
+        <article class="card">
+          <h3>GridwoRLd</h3>
+          <div class="meta">Reinforcement learning</div>
+          <p>Implementations and environments for exploring reinforcement learning algorithms.</p>
+          <div class="links"><a class="btn" href="https://github.com/CurtisChris7/GridwoRLd" rel="noopener noreferrer" target="_blank">GitHub</a></div>
+        </article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">&copy; Copyright <span id="year">2026</span> Christopher Curtis.</div>
+</footer>
+</body>
+</html>

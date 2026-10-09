@@ -1,63 +1,78 @@
-// Tiny, dependency-free enhancements. The portfolio is fully readable without JS.
+// Small, dependency-free enhancements. Every page is fully readable without JS.
 (() => {
-  const navToggle = document.querySelector('.menu-toggle');
+  const root = document.documentElement;
+
+  // Mobile menu
+  const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
-      const opened = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(opened));
-      navToggle.setAttribute('aria-label', opened ? 'Close menu' : 'Open menu');
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', 'Open menu');
-    }));
   }
 
-  const filters = [...document.querySelectorAll('.filter-button')];
-  const projects = [...document.querySelectorAll('[data-category]')];
-  filters.forEach(button => button.addEventListener('click', () => {
-    const value = button.dataset.filter;
-    filters.forEach(item => {
-      const active = item === button;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-pressed', String(active));
+  // Light / dark toggle (defaults to the system setting until the visitor chooses)
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  const current = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
+  const themeToggle = document.querySelector('.theme-toggle');
+  const labelToggle = () => {
+    if (themeToggle) themeToggle.setAttribute('aria-label', current() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  };
+  if (themeToggle) {
+    labelToggle();
+    themeToggle.addEventListener('click', () => {
+      const next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) { /* storage unavailable */ }
+      labelToggle();
     });
-    projects.forEach(item => { item.hidden = value !== 'all' && item.dataset.category !== value; });
-  }));
+    media.addEventListener?.('change', labelToggle);
+  }
 
-  const bibtex = {
-    ciphergrid: `@inproceedings{curtis2026ciphergrid,\n  title = {{CIPHERGRID} Benchmark: From Multimodal Rule Inference to Sequential Action},\n  author = {Curtis, Christopher and Fragoso, Victor and Savage, Saiph},\n  booktitle = {Advances in Neural Information Processing Systems},\n  year = {2026},\n  note = {Accepted, Evaluations and Datasets Track}\n}`,
-    chronemics: `@article{toxtli2024culturally,\n  title = {A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles},\n  author = {Toxtli, Carlos and Curtis, Christopher and Savage, Saiph},\n  journal = {Proceedings of the ACM on Human-Computer Interaction},\n  year = {2024},\n  doi = {10.1145/3686899}\n}`,
-    officemind: `@inproceedings{curtis2024officemind,\n  title = {Office-Mind AI: A Generative AI Tool for Gig Workers},\n  author = {Curtis, Christopher and Cooper, Seth and Savage, Saiph},\n  booktitle = {Book of Extended Abstracts of the ACM Collective Intelligence Conference},\n  year = {2024}\n}`,
-    portraits: `@inproceedings{flores2023inclusive,\n  title = {Inclusive Portraits: Race-Aware Human-in-the-Loop Technology},\n  author = {Flores-Saviaga, Claudia and Curtis, Christopher and Savage, Saiph},\n  booktitle = {Proceedings of the 3rd ACM Conference on Equity and Access in Algorithms, Mechanisms, and Optimization},\n  year = {2023},\n  doi = {10.1145/3617694.3623235}\n}`
-  };
-  const toast = document.querySelector('#toast');
-  let toastTimeout;
-  const notify = message => {
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add('show');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => toast.classList.remove('show'), 2600);
-  };
-  document.querySelectorAll('.bib-button').forEach(button => button.addEventListener('click', async () => {
-    const citation = bibtex[button.dataset.bib];
-    if (!citation) return;
-    try {
-      await navigator.clipboard.writeText(citation);
-      notify('BibTeX copied to clipboard');
-    } catch {
-      // A fallback for local files / non-secure contexts.
-      const area = document.createElement('textarea');
-      area.value = citation; area.style.position = 'fixed'; area.style.opacity = '0';
-      document.body.appendChild(area); area.select();
-      try { document.execCommand('copy'); notify('BibTeX copied to clipboard'); }
-      catch { notify('Copy not available in this browser'); }
-      area.remove();
-    }
-  }));
-  const year = document.querySelector('#year');
+  // BibTeX: show/hide and copy
+  document.querySelectorAll('[data-bib-toggle]').forEach(button => {
+    const panel = document.getElementById(button.getAttribute('aria-controls'));
+    if (!panel) return;
+    button.addEventListener('click', () => {
+      const open = panel.hidden;
+      panel.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.querySelectorAll('.bibtex .copy').forEach(button => {
+    button.addEventListener('click', async () => {
+      const text = button.parentElement.querySelector('pre').textContent;
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; }
+      catch (e) {
+        const area = document.createElement('textarea');
+        area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+        document.body.appendChild(area); area.select();
+        try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+        area.remove();
+      }
+      const original = button.textContent;
+      button.textContent = ok ? 'Copied' : 'Copy failed';
+      setTimeout(() => { button.textContent = original; }, 1600);
+    });
+  });
+
+  // CV table of contents: highlight the section in view
+  const tocLinks = [...document.querySelectorAll('.toc a')];
+  if (tocLinks.length && 'IntersectionObserver' in window) {
+    const byId = new Map(tocLinks.map(a => [a.getAttribute('href').slice(1), a]));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        tocLinks.forEach(a => a.classList.remove('active'));
+        byId.get(entry.target.id)?.classList.add('active');
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    byId.forEach((_, id) => { const el = document.getElementById(id); if (el) observer.observe(el); });
+  }
+
+  const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();
