@@ -1,0 +1,26 @@
+# -----------------------------------------------------------------------------
+# News items for the about page, newest first.
+#
+#   date     Shown in the left column (a year, or e.g. "Jun 2026").
+#   text     Markdown. Write {project} where the linked title of the entry
+#            named by `project` should appear.
+#   project  Optional id from _data/projects.yml.
+# -----------------------------------------------------------------------------
+
+- date: "2026"
+  text: Our paper {project} was accepted to the NeurIPS 2026 Evaluations & Datasets Track.
+  project: ciphergrid
+
+- date: "2025"
+  text: >-
+    Co-presented the official NeurIPS tutorial {project} with Saiph Savage in
+    Mexico City, with teaching code and slides released publicly.
+  project: positional-encoding
+
+- date: "2024"
+  text: Selected as an [NSF NRT PEAR Fellow](cv.html#fellowships) at Northeastern (2024–25).
+
+- date: "2024"
+  text: >-
+    Co-authored research appearing in ACM PACMHCI / CSCW and the ACM
+    Collective Intelligence Conference.

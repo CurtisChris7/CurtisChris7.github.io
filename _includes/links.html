@@ -1,0 +1,12 @@
+{%- comment -%}
+  Row of outlined link buttons.
+  Parameters: links (list of { label, url }), bib_id (optional: adds a "Bib" toggle)
+{%- endcomment -%}
+<div class="links">
+  {%- for link in include.links %}
+  <a class="btn" href="{{ link.url }}" rel="noopener noreferrer" target="_blank">{{ link.label }}</a>
+  {%- endfor %}
+  {%- if include.bib_id %}
+  <button class="btn" type="button" data-bib-toggle aria-expanded="false" aria-controls="{{ include.bib_id }}">Bib</button>
+  {%- endif %}
+</div>

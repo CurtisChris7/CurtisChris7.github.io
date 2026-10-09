@@ -1,0 +1,17 @@
+{%- comment -%}
+  Joins a list of names as "A, B, and C", underlining the site author.
+  Parameter: authors (list of names)
+{%- endcomment -%}
+{%- for name in include.authors -%}
+  {%- if name == site.author.name -%}
+    <em class="me">{{ name }}</em>
+  {%- else -%}
+    {{ name }}
+  {%- endif -%}
+  {%- if forloop.rindex == 2 -%}
+    {%- if forloop.length > 2 -%},{%- endif -%}
+    {{ " and " }}
+  {%- elsif forloop.last == false -%}
+    {{ ", " }}
+  {%- endif -%}
+{%- endfor -%}

@@ -1,0 +1,25 @@
+{%- comment -%}
+  A card on the projects page.
+  Parameter: item (an entry from _data/projects.yml)
+{%- endcomment -%}
+{%- assign item = include.item -%}
+<article class="card" id="{{ item.id }}">
+  <h3>{{ item.short_title | default: item.title | escape }}</h3>
+
+  <div class="meta">
+    {{ item.topic | escape }}
+    {%- if item.year %} &middot; {{ item.badge | escape }} {{ item.year }}{% endif %}
+  </div>
+
+  <p>{{ item.summary | escape }}</p>
+
+  {%- if item.stats %}
+  <p class="stats">{{ item.stats | escape }}</p>
+  {%- endif %}
+
+  {%- if item.note %}
+  <p class="note">{{ item.note | escape }}</p>
+  {%- endif %}
+
+  {% include links.html links=item.links %}
+</article>

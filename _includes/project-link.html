@@ -1,0 +1,12 @@
+{%- comment -%}
+  Internal link to an entry from _data/projects.yml, by id.
+  Papers, tutorials and workshops live on the publications page; code on the projects page.
+  Parameter: id
+{%- endcomment -%}
+{%- assign target = site.data.projects | where: "id", include.id | first -%}
+{%- if target.type == "software" -%}
+  {%- assign target_page = "/projects.html" -%}
+{%- else -%}
+  {%- assign target_page = "/publications.html" -%}
+{%- endif -%}
+<a href="{{ target_page | relative_url }}#{{ target.id }}">{{ target.short_title | default: target.title | escape }}</a>

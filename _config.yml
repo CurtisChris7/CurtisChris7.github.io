@@ -1,0 +1,68 @@
+# -----------------------------------------------------------------------------
+# Site settings
+#
+# Everything about *you* lives here (name, contact details, affiliations,
+# profiles). Papers, tutorials and code live in _data/projects.yml, news in
+# _data/news.yml, and CV entries in _data/cv.yml.
+#
+# GitHub Pages rebuilds the site automatically on every push.
+# -----------------------------------------------------------------------------
+
+title: Christopher Curtis
+description: >-
+  Christopher Curtis is a computer science PhD researcher at Northeastern
+  University working on AI evaluation, Transformer architectures, and
+  human–AI systems.
+url: "https://CurtisChris7.github.io"
+baseurl: ""
+lang: en
+
+author:
+  name: Christopher Curtis
+  first_name: Christopher
+  last_name: Curtis
+  position: PhD Researcher
+  email: curtis.ch@northeastern.edu
+  location: Boston, MA
+  photo: /assets/img/profile.jpg
+  photo_alt: Christopher Curtis presenting at a podium
+  department:
+    name: Khoury College of Computer Sciences
+    url: https://www.khoury.northeastern.edu/people/christopher-curtis/
+  university:
+    name: Northeastern University
+  lab:
+    name: Civic AI Lab
+    url: https://civicai.khoury.northeastern.edu/research-team/
+    advisor: Saiph Savage
+
+# Shown as icons on the about page and as links on the CV.
+# `icon` must match a file in _includes/icons/ (without .svg).
+social:
+  - name: ORCID
+    icon: orcid
+    url: https://orcid.org/0009-0006-4944-2602
+  - name: GitHub
+    icon: github
+    url: https://github.com/CurtisChris7
+  - name: LinkedIn
+    icon: linkedin
+    url: https://www.linkedin.com/in/christopher-curtis-b22197247/
+
+contact_note: >-
+  Research collaborations, academic conversations, and interesting technical
+  problems are welcome. Email is the best way to reach me.
+
+social_image: /assets/img/social-card.png
+
+# -----------------------------------------------------------------------------
+# Build settings (GitHub Pages compatible; no extra plugins needed)
+# -----------------------------------------------------------------------------
+markdown: kramdown
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle

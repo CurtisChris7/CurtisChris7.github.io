@@ -1,0 +1,30 @@
+{%- comment -%}
+  Navigation is built from every page that sets `nav_order` in its front matter.
+  The link text comes from `nav_title`.
+{%- endcomment -%}
+{%- assign nav_pages = site.pages | where_exp: "p", "p.nav_order" | sort: "nav_order" -%}
+<header class="site-header">
+  <nav class="container nav" aria-label="Main">
+    <a class="navbar-brand{% if page.hide_brand %} hide-desktop{% endif %}" href="{{ '/' | relative_url }}">
+      <span class="first">{{ site.author.first_name }}</span> {{ site.author.last_name }}
+    </a>
+
+    <button class="icon-button nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      {% include icons/menu.svg %}
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      {%- for p in nav_pages %}
+      <li>
+        <a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav_title }}</a>
+      </li>
+      {%- endfor %}
+      <li>
+        <button class="icon-button theme-toggle" type="button" aria-label="Toggle dark mode">
+          {% include icons/sun.svg %}
+          {% include icons/moon.svg %}
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>

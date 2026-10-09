@@ -1,0 +1,83 @@
+# -----------------------------------------------------------------------------
+# CV entries. Contact details come from _config.yml; teaching and
+# publications come from _data/projects.yml.
+#
+# Entry fields
+#   when         Date range shown in the badge (leave out for no badge).
+#   where        Small location line under the badge.
+#   title        Role, degree or award.
+#   org          Organization.
+#   description  One or two sentences.
+#   links        Optional list of { label, url }.
+# -----------------------------------------------------------------------------
+
+education:
+  - when: In progress
+    title: PhD, Computer Science
+    org: Northeastern University
+    where: Boston, MA
+  - when: "2022"
+    title: MS, Artificial Intelligence
+    org: Northeastern University
+    where: Boston, MA
+  - when: "2018"
+    title: BS, Applied Mathematics
+    org: Stony Brook University
+    description: Minor in Computer Science
+  - when: "2016"
+    title: Honors College
+    org: Westchester Community College
+
+experience:
+  - when: 2022 – Present
+    title: Research Team Member
+    org: Civic AI Lab, Northeastern University
+    description: >-
+      Developed research software and full-stack experimental platforms;
+      taught recurring hands-on workshops on LLM application development.
+  - when: 2022 – 2025
+    title: Infantryman
+    org: New York Army National Guard
+    description: >-
+      Served alongside graduate research, with earlier experience in U.S. Army
+      Infantry.
+  - when: 2020 – 2022
+    title: Freelance Software Developer
+    org: Independent
+    description: >-
+      Built computational-geometry tools, drone-flight simulation physics and
+      trajectory planning, and adversarial AI for strategy games.
+  - when: 2018 – 2020
+    title: Systems / Software Engineer
+    org: Hewlett Packard Enterprise
+    description: >-
+      Rebuilt a modular automated testing framework and developed reporting
+      and web-based visualizations for complex test results.
+
+fellowships:
+  - when: 2024 – 2025
+    title: NSF NRT PEAR Fellow
+    org: Northeastern University
+    description: >-
+      Interdisciplinary Platforms for Exchange and Allocation of Resources
+      traineeship, supported by the National Science Foundation.
+    links:
+      - label: Profile
+        url: https://coe.northeastern.edu/news/first-cohort-of-nsf-nrt-student-trainees-share-value-of-interdisciplinary-research-and-the-new-program/
+  - title: NSF IRES
+    org: International Research Experience, Germany
+    description: Selected for an international research experience in Germany.
+  - title: Global Partnership on AI (GPAI)
+    org: Student mentorship
+    description: International student mentorship through a lab initiative.
+  - title: Research collaborations
+    org: Northeastern, Microsoft, and UNAM
+    description: Published collaborations spanning researchers at these institutions.
+
+skills:
+  - area: AI & methods
+    items: Transformers, deep learning, information retrieval, statistics, computational geometry
+  - area: Languages
+    items: Python, TypeScript / JavaScript, C++, C#, Java
+  - area: Systems
+    items: PyTorch, React, Node.js, databases, full-stack applications, cloud deployment

@@ -1,0 +1,42 @@
+{%- comment -%}
+  One entry in a publication list (al-folio style).
+  Parameters: item (an entry from _data/projects.yml), prefix (keeps element ids unique per page)
+{%- endcomment -%}
+{%- assign item = include.item -%}
+{%- if item.bibtex -%}
+  {%- assign bib_id = include.prefix | append: "-" | append: item.id | append: "-bib" -%}
+{%- else -%}
+  {%- assign bib_id = nil -%}
+{%- endif -%}
+<li id="{{ item.id }}">
+  <div class="pub">
+    <div class="abbr">
+      <abbr class="badge" title="{{ item.venue | default: item.badge | escape }}">{{ item.badge | escape }}</abbr>
+    </div>
+
+    <div>
+      <div class="title">{{ item.title | escape }}</div>
+
+      {%- if item.authors %}
+      <div class="author">{% include authors.html authors=item.authors %}</div>
+      {%- endif %}
+
+      <div class="periodical">
+        <em>{{ item.kind | escape }}{% if item.kind and item.venue %}, {% endif %}{{ item.venue | escape }}</em>
+        {%- if item.venue_note %}, {{ item.venue_note | escape }}{% endif %}
+        {%- if item.location %}, {{ item.location | escape }}{% endif %}
+        {%- if item.year %}, {{ item.year }}{% elsif item.period %}, {{ item.period | escape }}{% endif %}
+        {%- if item.status %} <span class="status">&middot; {{ item.status | escape }}</span>{% endif %}
+      </div>
+
+      {% include links.html links=item.links bib_id=bib_id %}
+
+      {%- if bib_id %}
+      <div class="bibtex" id="{{ bib_id }}" hidden>
+        <pre>{{ item.bibtex | escape }}</pre>
+        <button class="btn copy" type="button">Copy</button>
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</li>

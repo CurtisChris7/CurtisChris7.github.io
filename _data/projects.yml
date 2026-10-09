@@ -1,0 +1,189 @@
+# -----------------------------------------------------------------------------
+# All papers, tutorials, workshops and code: the single source of truth.
+#
+# Every page reads from this file:
+#   publications page  type: paper (by year), then tutorials and workshops
+#   about page         entries with  selected: true
+#   projects page      entries with  project: research | code
+#   CV                 tutorials and workshops under "Teaching & Talks",
+#                      papers under "Publications"
+#   news               news items can point at an entry by its id
+#
+# Keep entries newest first; pages list them in this order.
+#
+# Fields (only id, type and title are required)
+#   id           Unique slug. Used for page anchors and news references.
+#   type         paper | tutorial | workshop | software
+#   title        Full title.
+#   short_title  Shorter name for cards and news (defaults to title).
+#   year         Year of publication / presentation.
+#   period       Shown instead of a year for undated items (e.g. "Recurring").
+#   authors      List of names. Your name (from _config.yml) is underlined.
+#   kind         Format label shown before the venue (e.g. "Official tutorial").
+#   venue        Venue or host.
+#   venue_note   Extra detail after the venue (track, "Extended abstract", ...).
+#   location     City, for talks and tutorials.
+#   badge        Short label in the colored box (e.g. "NeurIPS").
+#   status       e.g. "Accepted, forthcoming".
+#   topic        Research area, shown on project cards.
+#   summary      One or two sentences for project cards and the CV.
+#   stats        Optional headline numbers for the project card.
+#   note         Optional footnote for the project card.
+#   links        List of { label, url }. Shown as buttons everywhere.
+#   bibtex       Citation; adds a "Bib" button with copy.
+#   selected     true to feature on the about page.
+#   project      research | code  to list on the projects page.
+# -----------------------------------------------------------------------------
+
+- id: ciphergrid
+  type: paper
+  title: "CIPHERGRID Benchmark: From Multimodal Rule Inference to Sequential Action"
+  short_title: CIPHERGRID
+  year: 2026
+  authors:
+    - Christopher Curtis
+    - Victor Fragoso
+    - Saiph Savage
+  venue: Advances in Neural Information Processing Systems (NeurIPS)
+  venue_note: Evaluations & Datasets Track
+  badge: NeurIPS
+  status: Accepted, forthcoming
+  topic: AI evaluation
+  summary: >-
+    A controlled benchmark for multimodal rule inference and sequential
+    action: can a model infer an unfamiliar symbolic world from examples,
+    keep its rules straight, and use them to act? Even capable models
+    struggle to integrate skills they can perform individually.
+  stats: 635 benchmark problems · 41.89% best model accuracy*
+  note: >-
+    *As reported in the current public benchmark card; results depend on
+    evaluation configuration.
+  links:
+    - label: Dataset
+      url: https://huggingface.co/datasets/AnonCC7/CIPHERGRID
+    - label: Code
+      url: https://github.com/CurtisChris7/CIPHERGRID
+  bibtex: |-
+    @inproceedings{curtis2026ciphergrid,
+      title     = {{CIPHERGRID} Benchmark: From Multimodal Rule Inference to Sequential Action},
+      author    = {Curtis, Christopher and Fragoso, Victor and Savage, Saiph},
+      booktitle = {Advances in Neural Information Processing Systems},
+      year      = {2026},
+      note      = {Accepted, Evaluations and Datasets Track}
+    }
+  selected: true
+  project: research
+
+- id: positional-encoding
+  type: tutorial
+  title: "Positional Encoding: Past, Present, and Future"
+  year: 2025
+  authors:
+    - Christopher Curtis
+    - Saiph Savage
+  kind: Official tutorial
+  venue: Advances in Neural Information Processing Systems (NeurIPS)
+  location: Mexico City
+  badge: NeurIPS
+  topic: Transformers
+  summary: >-
+    An official NeurIPS tutorial connecting mathematical foundations and
+    modern methods in Transformer positional encoding, with reference code
+    for learning and teaching position methods.
+  links:
+    - label: Event
+      url: https://neurips.cc/virtual/2025/loc/mexico-city/128797
+    - label: Slides
+      url: https://neurips.cc/media/neurips-2025/Slides/128797_UIlZCE0.pdf
+    - label: Code
+      url: https://github.com/CurtisChris7/Neurips2025-CMDX-Tutorial
+  project: research
+
+- id: chronemics
+  type: paper
+  title: "A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles"
+  short_title: A Culturally-Aware AI Tool for Crowdworkers
+  year: 2024
+  authors:
+    - Carlos Toxtli
+    - Christopher Curtis
+    - Saiph Savage
+  venue: Proceedings of the ACM on Human-Computer Interaction (CSCW)
+  badge: CSCW
+  topic: Human–AI systems
+  summary: >-
+    Investigates how culturally informed design and chronemics can better
+    support diverse crowdworker work styles.
+  links:
+    - label: DOI
+      url: https://doi.org/10.1145/3686899
+  bibtex: |-
+    @article{toxtli2024culturally,
+      title   = {A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles},
+      author  = {Toxtli, Carlos and Curtis, Christopher and Savage, Saiph},
+      journal = {Proceedings of the ACM on Human-Computer Interaction},
+      year    = {2024},
+      doi     = {10.1145/3686899}
+    }
+  selected: true
+  project: research
+
+- id: office-mind
+  type: paper
+  title: "Office-Mind AI: A Generative AI Tool for Gig Workers"
+  short_title: Office-Mind AI
+  year: 2024
+  authors:
+    - Christopher Curtis
+    - Seth Cooper
+    - Saiph Savage
+  venue: ACM Collective Intelligence Conference
+  venue_note: Extended abstract
+  badge: ACM CI
+  topic: Human–AI systems
+  summary: >-
+    A generative AI tool for gig workers, connecting practical system design
+    with real workflows.
+  links:
+    - label: PDF
+      url: https://par.nsf.gov/servlets/purl/10590841
+    - label: Program
+      url: https://www.networkscienceinstitute.org/ci2024
+  bibtex: |-
+    @inproceedings{curtis2024officemind,
+      title     = {Office-Mind AI: A Generative AI Tool for Gig Workers},
+      author    = {Curtis, Christopher and Cooper, Seth and Savage, Saiph},
+      booktitle = {Book of Extended Abstracts of the ACM Collective Intelligence Conference},
+      year      = {2024}
+    }
+  selected: true
+  project: research
+
+- id: gpt-react-workshop
+  type: workshop
+  title: GPT + React Workshop
+  period: Recurring
+  authors:
+    - Christopher Curtis
+  kind: Hands-on workshop on LLM application development
+  venue: Civic AI Lab, Northeastern University
+  badge: Workshop
+  topic: Workshop materials
+  summary: >-
+    Public materials for a hands-on LLM application development workshop.
+  links:
+    - label: Materials
+      url: https://github.com/CurtisChris7/CS5170-GPT-React-Workshop
+  project: code
+
+- id: gridworld
+  type: software
+  title: GridwoRLd
+  topic: Reinforcement learning
+  summary: >-
+    Implementations and environments for exploring reinforcement learning
+    algorithms.
+  links:
+    - label: GitHub
+      url: https://github.com/CurtisChris7/GridwoRLd
+  project: code

@@ -1,0 +1,30 @@
+{%- comment -%}
+  One row in a CV section.
+  Parameters: when, where, title, org, description, links (all optional except title)
+{%- endcomment -%}
+<li class="entry">
+  <div class="when">
+    {%- if include.when %}
+    <span class="badge">{{ include.when | escape }}</span>
+    {%- endif %}
+    {%- if include.where %}
+    <span class="where">{{ include.where | escape }}</span>
+    {%- endif %}
+  </div>
+
+  <div>
+    <h3>{{ include.title | escape }}</h3>
+    {%- if include.org %}
+    <p class="org">{{ include.org | escape }}</p>
+    {%- endif %}
+    {%- if include.description or include.links %}
+    <p class="desc">
+      {{ include.description | escape }}
+      {%- for link in include.links %}
+      {% unless forloop.first %}&middot; {% endunless -%}
+      <a href="{{ link.url }}" rel="noopener noreferrer" target="_blank">{{ link.label }}</a>
+      {%- endfor %}
+    </p>
+    {%- endif %}
+  </div>
+</li>

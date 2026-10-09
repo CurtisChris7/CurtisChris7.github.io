@@ -1,0 +1,78 @@
+---
+layout: default
+---
+{%- comment -%}
+  About page: name, bio (the page's own Markdown content), photo, news,
+  selected publications and contact links.
+{%- endcomment -%}
+{%- assign author = site.author -%}
+{%- assign selected = site.data.projects | where: "selected", true -%}
+
+<header class="post-header">
+  <h1 class="page-name">
+    <span class="first">{{ author.first_name }}</span> {{ author.last_name }}
+  </h1>
+  <p class="post-description">
+    {{ author.position }},
+    <a href="{{ author.department.url }}" rel="noopener noreferrer" target="_blank">{{ author.department.name }}</a>,
+    {{ author.university.name }}.
+  </p>
+</header>
+
+<div class="about-grid">
+  <div class="about-body">
+    {{ content }}
+  </div>
+
+  <figure class="profile">
+    <img src="{{ author.photo | relative_url }}" alt="{{ author.photo_alt }}" fetchpriority="high">
+    <figcaption class="more-info">
+      <p>{{ author.department.name }}</p>
+      <p>{{ author.university.name }}</p>
+      <p>{{ author.location }}</p>
+    </figcaption>
+  </figure>
+</div>
+
+<h2 class="section-title">news</h2>
+<table class="news-table">
+  <tbody>
+    {%- for item in site.data.news %}
+    {%- assign text = item.text | markdownify | remove: "<p>" | remove: "</p>" | strip -%}
+    {%- if item.project -%}
+      {%- capture link -%}{% include project-link.html id=item.project %}{%- endcapture -%}
+      {%- assign link = link | strip -%}
+      {%- assign text = text | replace: "{project}", link -%}
+    {%- endif %}
+    <tr>
+      <th scope="row">{{ item.date }}</th>
+      <td>{{ text }}</td>
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+
+<h2 class="section-title"><a href="{{ '/publications.html' | relative_url }}">selected publications</a></h2>
+<ol class="bibliography">
+  {%- for item in selected %}
+  {% include publication.html item=item prefix="selected" %}
+  {%- endfor %}
+</ol>
+
+<div class="social">
+  <div class="social-icons">
+    <a href="mailto:{{ author.email }}" title="Email" aria-label="Email">
+      {% include icons/email.svg %}
+    </a>
+    {%- for profile in site.social %}
+    <a href="{{ profile.url }}"
+       title="{{ profile.name }}"
+       aria-label="{{ profile.name }}"
+       rel="noopener noreferrer"
+       target="_blank">
+      {% include icons/{{ profile.icon }}.svg %}
+    </a>
+    {%- endfor %}
+  </div>
+  <p class="contact-note">{{ site.contact_note }}</p>
+</div>

@@ -1,0 +1,61 @@
+{%- if page.title and page.title != site.title -%}
+  {%- assign page_title = page.title | append: " | " | append: site.title -%}
+{%- else -%}
+  {%- assign page_title = site.title -%}
+{%- endif -%}
+{%- assign page_description = page.description | default: site.description | strip_newlines -%}
+{%- assign version = site.time | date: "%s" -%}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <meta name="author" content="{{ site.author.name }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ site.social_image | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@400&display=swap">
+
+  <!-- The ?v= value changes on every build so browsers never use a stale copy. -->
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ version }}">
+  <script defer src="{{ '/assets/js/script.js' | relative_url }}?v={{ version }}"></script>
+
+  <!-- Apply a saved light/dark choice before the page paints. -->
+  <script>
+    try {
+      var theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
+
+  {%- if page.url == "/" %}
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": {{ site.author.name | jsonify }},
+      "url": {{ "/" | absolute_url | jsonify }},
+      "jobTitle": {{ site.author.position | jsonify }},
+      "affiliation": { "@type": "Organization", "name": {{ site.author.university.name | jsonify }} },
+      "sameAs": {{ site.social | map: "url" | jsonify }},
+      "email": {{ site.author.email | prepend: "mailto:" | jsonify }}
+    }
+  </script>
+  {%- endif %}
+</head>
