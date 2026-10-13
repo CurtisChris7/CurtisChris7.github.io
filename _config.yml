@@ -48,6 +48,11 @@ social:
   - name: LinkedIn
     icon: linkedin
     url: https://www.linkedin.com/in/christopher-curtis-b22197247/
+    navbar: true
+  - name: Twitter
+    icon: x
+    url: https://x.com/curtischris7
+    navbar: true
 
 contact_note: >-
   Research collaborations, academic conversations, and interesting technical

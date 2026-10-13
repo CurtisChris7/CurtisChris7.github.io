@@ -3,6 +3,7 @@
   The link text comes from `nav_title`.
 {%- endcomment -%}
 {%- assign nav_pages = site.pages | where_exp: "p", "p.nav_order" | sort: "nav_order" -%}
+{%- assign nav_social = site.social | where: "navbar", true -%}
 <header class="site-header">
   <nav class="container nav" aria-label="Main">
     <a class="navbar-brand{% if page.hide_brand %} hide-desktop{% endif %}" href="{{ '/' | relative_url }}">
@@ -19,6 +20,17 @@
         <a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav_title }}</a>
       </li>
       {%- endfor %}
+      <li class="nav-social">
+        {%- for profile in nav_social %}
+        <a href="{{ profile.url }}"
+           title="{{ profile.name }}"
+           aria-label="{{ profile.name }}"
+           rel="noopener noreferrer"
+           target="_blank">
+          {% include icons/{{ profile.icon }}.svg %}
+        </a>
+        {%- endfor %}
+      </li>
       <li>
         <button class="icon-button theme-toggle" type="button" aria-label="Toggle dark mode">
           {% include icons/sun.svg %}
