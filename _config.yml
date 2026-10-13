@@ -45,6 +45,7 @@ social:
   - name: GitHub
     icon: github
     url: https://github.com/CurtisChris7
+    navbar: true
   - name: LinkedIn
     icon: linkedin
     url: https://www.linkedin.com/in/christopher-curtis-b22197247/
