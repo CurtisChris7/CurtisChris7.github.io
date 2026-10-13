@@ -16,10 +16,16 @@ education:
     title: PhD, Computer Science
     org: Northeastern University
     where: Boston, MA
+    description: >-
+      GPA 3.92 / 4.00. Coursework: Deep Learning; Neural Mechanics of Concepts;
+      Theory and Methods in HCI; Fundamentals of Platform Economy.
   - when: "2022"
     title: MS, Artificial Intelligence
     org: Northeastern University
     where: Boston, MA
+    description: >-
+      Coursework: Machine Learning; Data Mining Techniques;
+      Information Retrieval; AI for Human-Computer Interaction; AI Ethics;
   - when: "2018"
     title: BS, Applied Mathematics
     org: Stony Brook University
