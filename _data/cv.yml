@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------------------
 
 education:
-  - when: In progress
+  - when: 2023 - In progress
     title: PhD, Computer Science
     org: Northeastern University
     where: Boston, MA
@@ -77,10 +77,12 @@ fellowships:
     links:
       - label: Profile
         url: https://coe.northeastern.edu/news/first-cohort-of-nsf-nrt-student-trainees-share-value-of-interdisciplinary-research-and-the-new-program/
-  - title: NSF IRES
+  - when: "2024"
+    title: NSF IRES
     org: International Research Experience, Germany
     description: Selected for an international research experience in Germany.
-  - title: Global Partnership on AI (GPAI)
+  - when: "2024"
+    title: Global Partnership on AI (GPAI)
     org: Student mentorship
     description: International student mentorship through a lab initiative.
   - title: Research collaborations
