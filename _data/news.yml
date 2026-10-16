@@ -11,6 +11,9 @@
   text: Our paper {project} was accepted to the NeurIPS 2026 Evaluations & Datasets Track.
   project: ciphergrid
 
+- date: "2026"
+  text: Nominated for the [Outstanding PhD Award](cv.html#fellowships).
+
 - date: "2025"
   text: >-
     Co-presented the official NeurIPS tutorial {project} with Saiph Savage in

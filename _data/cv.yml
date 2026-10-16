@@ -19,6 +19,9 @@ education:
     description: >-
       GPA 3.92 / 4.00. Coursework: Deep Learning; Neural Mechanics of Concepts;
       Theory and Methods in HCI; Fundamentals of Platform Economy.
+  - title: Graduate Certificate, Digital Platforms for Service Innovation
+    org: Northeastern University
+    where: Boston, MA
   - when: "2022"
     title: MS, Artificial Intelligence
     org: Northeastern University
@@ -36,9 +39,11 @@ education:
 
 experience:
   - when: 2022 – Present
-    title: Research Team Member
+    title: PhD Researcher / Program Manager
     org: Civic AI Lab, Northeastern University
     description: >-
+      Lead operations for multiple lab research projects, coordinate project
+      workflows, and support lab administration and intern management.
       Developed research software and full-stack experimental platforms;
       taught recurring hands-on workshops on LLM application development.
   - when: 2022 – 2025
@@ -61,6 +66,8 @@ experience:
       and web-based visualizations for complex test results.
 
 fellowships:
+  - when: "2026"
+    title: Outstanding PhD Award Nominee
   - when: 2024 – 2025
     title: NSF NRT PEAR Fellow
     org: Northeastern University
